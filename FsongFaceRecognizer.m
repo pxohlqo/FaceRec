@@ -2,8 +2,10 @@ function [detectedImg, R] = FsongFaceRecognizer(inputImage)
     lable = 'Song';
     
     detector = vision.CascadeObjectDetector('isSong.xml');
+    Log = 'read features file'
     bBox = step(detector, inputImage);
     detectedImg = insertObjectAnnotation(inputImage, 'rectangle',bBox,lable);
+    Log = 'add rectangle'
 
     % TODO:线条加宽
 
