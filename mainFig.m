@@ -22,7 +22,7 @@ function varargout = mainFig(varargin)
 
 % Edit the above text to modify the response to help mainFig
 
-% Last Modified by GUIDE v2.5 20-Sep-2017 20:24:30
+% Last Modified by GUIDE v2.5 03-Oct-2017 23:21:10
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -96,52 +96,31 @@ if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgr
 end
 
 
-% --- Executes on button press in pushbutton1.
-function pushbutton1_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton1 (see GCBO)
+% --- Executes on button press in confirmButton.
+function confirmButton_Callback(hObject, eventdata, handles)
+% hObject    handle to confirmButton (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
 preText = '      Image URL';
 imgUri = get(handles.imageUriEdit, 'string');
-Log = 'get imgUri'
+FprocessLog('get image URL');
 
 try    
     img = imread(imgUri);
-    Log = 'imread'
-       
+    FprocessLog('read image');       
      
 catch
+    FprocessLog('active imageUriErrorFig');
     imageUriErrorFig;
 end
 
-Log = 'run fun'
+FprocessLog('run function')
 FimagePreprocesser(img);
 [detectedImage, result] = FsongFaceRecognizer(img);
-Log = 'run face rec'
+FprocessLog('run faical recogenizer');
 
 setappdata(0, 'detectedImage', detectedImage);
 imageDisplayFig;
-Log = 'show Image'
-
-
-function detectImage(img)
-%myFun - Description
-%
-% Syntax: myFun(input)
-%
-% Long description
-img = FimagePreprocesser(img);
-Log = 'preprocessing'
-[detectedImage, result] = FfaceRecognizer(img, name);
-
-    setappdata(0, 'detectedImage', detectedImage);
-  setappdata(0, 'result', result);
-
-    set(mainFig, 'visible', 'off');
-    imageDisplayFig;
-    tableDisplayFig;
-
-
-
+FprocessLog('active imageDisplayFig');
 

@@ -1,8 +1,11 @@
 function [detectedImg, R] = FsongFaceRecognizer(inputImage)
+    FprocessLog('set default lable');
     lable = 'Song';
     
+    FprocessLog('instantiate a cascade object detector with feature file  isSong.xml');
     detector = vision.CascadeObjectDetector('isSong.xml');
-    Log = 'read features file'
+
+    FprocessLog('perform the detector on the image')
     boundingBox = step(detector, inputImage);
     [imgWidth, imgHeight] = size(inputImage);
     
@@ -12,20 +15,20 @@ function [detectedImg, R] = FsongFaceRecognizer(inputImage)
         lineWidth = 1;     
     end
     
+    FprocessLog('insert rectangle on the image');
     detectedImg = insertObjectAnnotation(inputImage, 'rectangle',boundingBox,lable,...
         'LineWidth', lineWidth);
-    Log = 'add rectangle'
 
     if (isempty(boundingBox))
         
-        R = [0,lable];
+        R = [0, lable, 0];
 
     else
         %resultCount = boundingBox;
         %confidence = 1/resultCount;
 
         %R = [1;lable;confidence];
-        R = [1,lable,];
+        R = [1, lable, 0];
     
     end
 

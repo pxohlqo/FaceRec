@@ -55,9 +55,10 @@ function imageDisplayFig_OpeningFcn(hObject, eventdata, handles, varargin)
 % Choose default command line output for imageDisplayFig
 handles.output = hObject;
 
+FprocessLog('get image from appdata');
 img = getappdata(0, 'detectedImage');
-Log = 'getappdata'
 
+FprocessLog('show image');
 imshow(img);
 
 % Update handles structure
