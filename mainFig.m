@@ -115,12 +115,13 @@ catch
     imageUriErrorFig;
 end
 
-FprocessLog('run function')
+FprocessLog('run function');
 FimagePreprocesser(img);
-[detectedImage, result] = FsongFaceRecognizer(img);
+
 FprocessLog('run faical recogenizer');
+[detectedImage, result] = FsongFaceRecognizer(img);
+
 
 setappdata(0, 'detectedImage', detectedImage);
-imageDisplayFig;
 FprocessLog('active imageDisplayFig');
-
+imageDisplayFig;

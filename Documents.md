@@ -7,7 +7,7 @@
 
 代码已开源，并提交至[Github](https://github.com/pxohlqo/FaceRec)托管。
 
-## 1.2 用户界面
+### 1.2 图形界面及使用引导
 
 ## 2. 代码文件
 
@@ -27,7 +27,15 @@
 #### 2.2.1 imageDisplayFig
 显示处理结果。
 
-####  2.2.2 imageUriErrorFig
+#### 2.2.2 imageUriErrorFig
 图片地址输入错误提示窗口。
 
-####  2.2.3 
+#### 2.2.3 mainFig
+程序启动主界面。
+
+#### 2.2.4 **tableDispalyFig*
+检测结果显示窗口。 *（暂未实现，目前不可见）*
+
+### 2.3 脚本
+#### 2.3.1 FfeatureGenerator
+生成特征文件（*.xml），使用 **“Haar”**特征，具体算法函数见文件内注释。
