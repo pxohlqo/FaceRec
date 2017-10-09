@@ -7,6 +7,8 @@
 
 代码已开源，并提交至[Github](https://github.com/pxohlqo/FaceRec)托管。
 
+同时提供Google Doc版[用户文档](https://docs.google.com/document/d/14R_Mhr6JwMfXROG_j7rWRYRpGmVh1xdM7fmrD6fRtqE/edit?usp=sharing).
+
 ### 1.2 图形界面及使用引导
 
 ## 2. 代码文件
@@ -39,3 +41,6 @@
 ### 2.3 脚本
 #### 2.3.1 FfeatureGenerator
 生成特征文件（*.xml），使用 **“Haar”**特征，具体算法函数见文件内注释。
+
+#### 2.3.2 FprocessLog
+程序运行日志。
