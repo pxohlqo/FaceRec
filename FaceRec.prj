@@ -69,14 +69,17 @@
     <fileset.main>
       <file>${PROJECT_ROOT}\mainFig.m</file>
     </fileset.main>
-    <fileset.resources />
+    <fileset.resources>
+      <file>${PROJECT_ROOT}\Documents.md</file>
+      <file>${PROJECT_ROOT}\isSong.xml</file>
+    </fileset.resources>
     <fileset.package />
     <fileset.depfun>
+      <file>${PROJECT_ROOT}\errorMessageFig.m</file>
       <file>${PROJECT_ROOT}\FimagePreprocesser.m</file>
       <file>${PROJECT_ROOT}\FprocessLog.m</file>
       <file>${PROJECT_ROOT}\FsongFaceRecognizer.m</file>
       <file>${PROJECT_ROOT}\imageDisplayFig.m</file>
-      <file>${PROJECT_ROOT}\imageUriErrorFig.m</file>
     </fileset.depfun>
     <build-deliverables>
       <file location="${PROJECT_ROOT}\FaceRec\for_testing" name="mainFig.exe" optional="false">F:\FaceRec\FaceRec\for_testing\mainFig.exe</file>

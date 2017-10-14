@@ -112,7 +112,8 @@ try
      
 catch
     FprocessLog('active imageUriErrorFig');
-    imageUriErrorFig;
+    setappdata(0, 'errorMessage','please check your image URL');
+    errorMessageFig;
 end
 
 FprocessLog('run function');

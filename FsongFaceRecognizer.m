@@ -3,7 +3,14 @@ function [detectedImg, R] = FsongFaceRecognizer(inputImage)
     lable = 'Song';
     
     FprocessLog('instantiate a cascade object detector with feature file  isSong.xml');
-    detector = vision.CascadeObjectDetector('isSong.xml');
+    try
+        detector = vision.CascadeObjectDetector('isSong.xml');
+    catch
+        FprocessLog('no isSong.xml');
+        setappdata(0, 'errorMessage', 'no feature.xml');
+        errorMessageFig;
+    end
+    
 
     FprocessLog('perform the detector on the image');
     boundingBox = step(detector, inputImage);
