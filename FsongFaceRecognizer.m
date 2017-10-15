@@ -1,4 +1,4 @@
-function [detectedImg, R] = FsongFaceRecognizer(inputImage)
+function [detectedImg, R] = FsongFaceRecognizer(inputImage, minFiltingFactor, maxFiltingFactor)
     FprocessLog('set default lable');
     lable = 'Song';
     
@@ -13,13 +13,18 @@ function [detectedImg, R] = FsongFaceRecognizer(inputImage)
     
 
     FprocessLog('perform the detector on the image');
-    boundingBox = step(detector, inputImage);
+    boundingBox = step(detector, inputImage)
     [imgWidth, imgHeight] = size(inputImage);
-    
+    filtingMatrix = boundingBox(:, 3:4)
+    smallFiltingFactor = minFiltingFactor;
+    bigFiltingFactor = maxFiltingFactor;
+    [bBoxFiltingRow, bBoxFiltingCol] = find(filtingMatrix < imgWidth/smallFiltingFactor | filtingMatrix > imgWidth*bigFiltingFactor);
+    boundingBox(bBoxFiltingRow, :) = [];
+
     if imgWidth/100 >1
         lineWidth = ceil(imgWidth/100);  
     else
-        lineWidth = 1;     
+        lineWidth = 1;
     end
     
     FprocessLog('insert rectangle on the image');
@@ -29,6 +34,8 @@ function [detectedImg, R] = FsongFaceRecognizer(inputImage)
     if (isempty(boundingBox))
         
         R = [0, lable, 0];
+        setappdata(0, 'errorMessage', 'can`t find face');
+        errorMessageFig;
 
     else
         %resultCount = boundingBox;

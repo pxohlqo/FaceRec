@@ -7,7 +7,7 @@
 
 代码已开源，并提交至[Github](https://github.com/pxohlqo/FaceRec)托管。
 
-同时提供Google Doc版[用户文档](https://docs.google.com/document/d/14R_Mhr6JwMfXROG_j7rWRYRpGmVh1xdM7fmrD6fRtqE/edit?usp=sharing).
+同时提供Google Doc版[用户文档](https://docs.google.com/document/d/14R_Mhr6JwMfXROG_j7rWRYRpGmVh1xdM7fmrD6fRtqE/edit?usp=sharing)*（可能不会及时更新）*。
 
 ### 1.2 图形界面及使用引导
 
@@ -24,13 +24,13 @@
 #### 2.1.3 FsongFaceRecognizer
 面部识别函数，获取图片，根据预先生成的特征文件 `isSong.xml` 使用 `vision.CascadeObjectDetector` 生成 **识别框(BoundingBox)** 绘制在原图上。
 
-### 2.2 Figure
+### 2.2 Figures
 
 #### 2.2.1 imageDisplayFig
 显示处理结果。
 
-#### 2.2.2 imageUriErrorFig
-图片地址输入错误提示窗口。
+#### 2.2.2 errorDisplayFig
+错误信息提示窗口。
 
 #### 2.2.3 mainFig
 程序启动主界面。
@@ -41,6 +41,3 @@
 ### 2.3 脚本
 #### 2.3.1 SfeatureGenerator
 生成特征文件（*.xml），使用 **“Haar”** 特征，具体算法函数见文件内注释。
-
-#### 2.3.2 FprocessLog
-程序运行日志。

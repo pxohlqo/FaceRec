@@ -22,7 +22,7 @@ function varargout = mainFig(varargin)
 
 % Edit the above text to modify the response to help mainFig
 
-% Last Modified by GUIDE v2.5 03-Oct-2017 23:21:10
+% Last Modified by GUIDE v2.5 16-Oct-2017 01:02:22
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -60,6 +60,8 @@ guidata(hObject, handles);
 
 % UIWAIT makes mainFig wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
+
+
 
 
 % --- Outputs from this function are returned to the command line.
@@ -120,9 +122,117 @@ FprocessLog('run function');
 FimagePreprocesser(img);
 
 FprocessLog('run faical recogenizer');
-[detectedImage, result] = FsongFaceRecognizer(img);
+[detectedImage, result] = FsongFaceRecognizer(img, get(handles.minEdit, 'String'), get(handles.maxEdit, 'String'));
 
 
 setappdata(0, 'detectedImage', detectedImage);
 FprocessLog('active imageDisplayFig');
 imageDisplayFig;
+
+function minEdit_Callback(hObject, eventdata, handles)
+% hObject    handle to minEdit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of minEdit as text
+%        str2double(get(hObject,'String')) returns contents of minEdit as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function minEdit_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to minEdit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function maxEdit_Callback(hObject, eventdata, handles)
+% hObject    handle to maxEdit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of maxEdit as text
+%        str2double(get(hObject,'String')) returns contents of maxEdit as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function maxEdit_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to maxEdit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+% --- Executes on slider movement.
+function minSlider_Callback(hObject, eventdata, handles)
+% hObject    handle to minSlider (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'Value') returns position of slider
+%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
+
+
+set(handles.minEdit, 'String', get(hObject, 'Value'));
+
+
+% --- Executes during object creation, after setting all properties.
+function minSlider_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to minSlider (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
+
+%minSliderListener1 = addlistener(hObject,'Value','PostSet',@(s,e) disp(get(hObject, 'Value')));
+minSliderListener2 = addlistener(hObject,'Value','PostSet',@(hObject, eventdata, handles) minSlider_Callback(hObject, eventdata, handles));
+
+% --- Executes on slider movement.
+function maxSlider_Callback(hObject, eventdata, handles)
+% hObject    handle to maxSlider (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'Value') returns position of slider
+%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
+
+set(handles.maxEdit, 'String', get(hObject, 'Value'));
+
+
+% --- Executes during object creation, after setting all properties.
+function maxSlider_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to maxSlider (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
+
+%maxSliderListener1 = addlistener(hObject,'Value','PostSet',@(s,e) disp(get(hObject, 'Value')));
+maxSliderListener2 = addlistener(hObject,'Value','PreSet',@(hObject, eventdata, handles) maxSlider_Callback(hObject, eventdata, handles));
+
+
+% --- Executes on button press in resetFactorsButton.
+function resetFactorsButton_Callback(hObject, eventdata, handles)
+% hObject    handle to resetFactorsButton (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+set(handles.minSlider, 'Value', 13);
+set(handles.minEdit, 'String', get(handles.minSlider, 'Value'));
+set(handles.maxSlider, 'Value', 0.97);
+set(handles.maxEdit, 'String', get(handles.maxSlider, 'Value'));
