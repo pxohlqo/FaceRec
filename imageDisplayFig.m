@@ -55,6 +55,12 @@ function imageDisplayFig_OpeningFcn(hObject, eventdata, handles, varargin)
 % Choose default command line output for imageDisplayFig
 handles.output = hObject;
 
+FFactor = getappdata(0, 'imageDisplayMessage');
+minFFactor = FFactor(1);
+maxFFactor = FFactor(2);
+%set(hObject, 'Name', ['FaceRec  ', 'minFFactor:', minFFactor, '    maxFFactor:', maxFFactor]);
+set(hObject, 'Name', ['FaceRec  ', '(minFFactor:', num2str(minFFactor), '    maxFFactor:', num2str(maxFFactor), ')']);
+
 FprocessLog('get image from appdata');
 img = getappdata(0, 'detectedImage');
 

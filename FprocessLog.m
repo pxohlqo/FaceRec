@@ -4,8 +4,8 @@ function log = FprocessLog(logMessage)
 % Syntax: log = FprocessLog(logMessage)
 %
 % Long description
-    %mDate = datestr(now, 31);
+    mDate = datestr(now, 31);
     logDetail = logMessage;
-    %log = [mDate, ':' logDetail];
+    log = [mDate, ':' logDetail];
 
 end

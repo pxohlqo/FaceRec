@@ -13,12 +13,12 @@ function [detectedImg, R] = FsongFaceRecognizer(inputImage, minFiltingFactor, ma
     
 
     FprocessLog('perform the detector on the image');
-    boundingBox = step(detector, inputImage)
+    boundingBox = step(detector, inputImage);
     [imgWidth, imgHeight] = size(inputImage);
-    filtingMatrix = boundingBox(:, 3:4)
+    filtingMatrix = boundingBox(:, 3:4);
     smallFiltingFactor = minFiltingFactor;
     bigFiltingFactor = maxFiltingFactor;
-    [bBoxFiltingRow, bBoxFiltingCol] = find(filtingMatrix < imgWidth/smallFiltingFactor | filtingMatrix > imgWidth*bigFiltingFactor);
+    [bBoxFiltingRow, bBoxFiltingCol] = find(filtingMatrix < imgWidth./smallFiltingFactor | filtingMatrix > imgWidth.*bigFiltingFactor);
     boundingBox(bBoxFiltingRow, :) = [];
 
     if imgWidth/100 >1

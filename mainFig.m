@@ -22,7 +22,7 @@ function varargout = mainFig(varargin)
 
 % Edit the above text to modify the response to help mainFig
 
-% Last Modified by GUIDE v2.5 16-Oct-2017 01:02:22
+% Last Modified by GUIDE v2.5 16-Oct-2017 12:32:52
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -122,12 +122,22 @@ FprocessLog('run function');
 FimagePreprocesser(img);
 
 FprocessLog('run faical recogenizer');
-[detectedImage, result] = FsongFaceRecognizer(img, get(handles.minEdit, 'String'), get(handles.maxEdit, 'String'));
+minFFactor = get(handles.minSlider, 'Value');
+maxFFactor = get(handles.maxSlider, 'Value');
+[detectedImage, result] = FsongFaceRecognizer(img, minFFactor, maxFFactor);
+setappdata(0, 'imageDisplayMessage', [minFFactor, maxFFactor]);
 
 
-setappdata(0, 'detectedImage', detectedImage);
-FprocessLog('active imageDisplayFig');
-imageDisplayFig;
+if result(1) == 0
+    return
+
+else
+    setappdata(0, 'detectedImage', detectedImage);
+    FprocessLog('active imageDisplayFig');
+    imageDisplayFig;
+    
+end
+
 
 function minEdit_Callback(hObject, eventdata, handles)
 % hObject    handle to minEdit (see GCBO)
