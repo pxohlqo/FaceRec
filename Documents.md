@@ -11,6 +11,9 @@
 
 ### 1.2 图形界面及使用引导
 
+![mainFig](https://github.com/pxohlqo/MarkdownPhotos/raw/master/mainFig.png)
+
+![imageDisplayFig](https://github.com/pxohlqo/MarkdownPhotos/raw/master/FaceRec_imageDisplayFig.png)
 ## 2. 代码文件
 
 ### 2.1 函数
