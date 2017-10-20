@@ -14,7 +14,7 @@
     <param.company />
     <param.summary>基佬识别器</param.summary>
     <param.description />
-    <param.screenshot />
+    <param.screenshot>F:\工程\temp\FaceRec展示\微信图片_20171020224320.png</param.screenshot>
     <param.guid />
     <param.installpath.string>\FaceRec\</param.installpath.string>
     <param.installpath.combo>option.installpath.programfiles</param.installpath.combo>
@@ -43,7 +43,6 @@
       <param.email />
       <param.company />
       <param.description />
-      <param.screenshot />
       <param.guid />
       <param.installpath.string />
       <param.installpath.combo />
