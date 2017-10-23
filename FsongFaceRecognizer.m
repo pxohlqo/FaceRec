@@ -4,7 +4,8 @@ function [detectedImg, R] = FsongFaceRecognizer(inputImage, minFiltingFactor, ma
     
     FprocessLog('instantiate a cascade object detector with feature file  isSong.xml');
     try
-        detector = vision.CascadeObjectDetector('isSong.xml');
+        %detector = vision.CascadeObjectDetector('isSong.xml');
+        detector = vision.CascadeObjectDetector('Feature.xml');
     catch
         FprocessLog('no isSong.xml');
         setappdata(0, 'errorMessage', 'no feature.xml');

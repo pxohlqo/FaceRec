@@ -1,12 +1,12 @@
-ROIs;
-positiveImgDir;
-negativeImgDir;
+ROIs = SongFace;
+positiveImgDir = fullfile('song');
+negativeImgDir = fullfile('notsong');
 
-load(ROIs);
+%load(ROIs);
 positiveInstances = ROIs(:,1:2);
 
 negativeImages = imageDatastore(negativeImgDir);
 
-trainCascadeObjectDetector('Feature.xml', positiveInstances,...
-    negativeImages, 'FalseAlarmRate',0.1,'NumCascadeStages',13, 'FeatureType','Haar');
+trainCascadeObjectDetector('isSong.xml', positiveInstances,...
+    negativeImages, 'FalseAlarmRate',0.15,'NumCascadeStages',18, 'FeatureType','Haar');
 
